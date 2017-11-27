@@ -18,5 +18,11 @@ original_src/echoserver/echoserver:
 original_src/echoclient/echoclient:
 	(cd `dirname $@` && $(MAKE))
 
+run_echoserver: finished_src/echoserver/echoserver
+	(cd `dirname $<` && ./echoserver)
+
+run_echoclient: finished_src/echoclient/echoclient
+	(cd `dirname $<` && ./echoclient 127.0.0.1)
+
 clean:
 	rm -f $(PROGS)

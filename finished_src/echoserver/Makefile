@@ -7,8 +7,8 @@ OBJ = echoserver.o
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 echoserver: ../lib/*.c tcpserv04.c
-	$(CC) -Wall -o echoserver ../lib/*.c tcpserv04.c -I ../include -lm -lcyassl
-	
+	$(CC) -Wall -o echoserver ../lib/*.c tcpserv04.c -I ../include -lm -lwolfssl
+
 .PHONY: clean
 
 clean:
