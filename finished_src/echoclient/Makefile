@@ -1,13 +1,12 @@
 CC=gcc
-CFLAGS=-Wall -I ../include
+CFLAGS=-Wall -Werror -I ../include
 DEPS = ../include/unp.h
 OBJ = echoclient.o
+DEFS = \
+	-DWC_RSA_BLINDING
 
-%.o: %.c $(DEPS)
-	$(CC) -c -o $@ $< $(CFLAGS)
-
-echoclient: ../lib/*.c tcpcli01.c
-	$(CC) -Wall -o echoclient ../lib/*.c tcpcli01.c -I ../include -lm -lwolfssl
+echoclient: ../lib/*.c tcpcli01.c $(DEPS)
+	$(CC) $(CFLAGS) $(DEFS) -o echoclient ../lib/*.c tcpcli01.c -I ../include -lm -lwolfssl
 
 .PHONY: clean
 
